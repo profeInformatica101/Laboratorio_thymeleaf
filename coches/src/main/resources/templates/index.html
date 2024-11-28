@@ -10,6 +10,6 @@
 		<h2 th:text="#{message.title}">Texto por defecto</h2>
 		
 		<a th:href="@{/coches}">Tabla Coches</a>
-		
+		<div th:replace="~{fragmentos :: nuevo_coche}"></div>
 	</body>
 </html>

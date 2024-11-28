@@ -10,24 +10,36 @@
 	<div th:replace="~{fragmentos :: idioma}"></div>
 	<h1 th:text="${mensaje}">Texto por defecto</h1>
 	<h2 th:text="#{titulo.coches}">Texto por defecto</h2>
-	<table>
-		<tr>
-			<th>MARCA</th>
-			<th>MODELO</th>
-			<th>PRECIO</th>
-			<th>AÑO</th>
-			<th>FUENTE DE ENERGÍA</th>
-		</tr>
-		<tr th:each="coche : ${coches}">
-			<td th:text="${coche.marca}"></td>
-			<td th:text="${coche.modelo}"></td>
-			<td th:text="${coche.precio}"></td>
-			<td th:text="${coche.ano}"></td>
-			<td th:text="${coche.fuenteEnergia}"></td>
-		</tr>
-		</tr>
-	</table>
-	<a th:href="@{/}"><p th:text="#{message.atras}"></p></a>
+
+	<div th:replace="~{fragmentos :: filtrar}"></div>
+	<div th:if="${coches.isEmpty()}">
+		<p th:text="#{mensaje.nohaycoches}"></p>
+	</div>
+	<div th:unless="${coches.isEmpty()}">
+
+		<table>
+			<tr>
+				<th>MARCA</th>
+				<th>MODELO</th>
+				<th>PRECIO</th>
+				<th>AÑO</th>
+				<th>FUENTE DE ENERGÍA</th>
+			</tr>
+			<tr th:each="coche : ${coches}">
+				<td th:text="${coche.marca}"></td>
+				<td th:text="${coche.modelo}"></td>
+				<td th:text="${coche.precio}"></td>
+				<td th:text="${coche.ano}"></td>
+				<td th:text="${coche.fuenteEnergia}"></td>
+			</tr>
+			</tr>
+		</table>
+	</div>
+	<div th:replace="~{fragmentos :: nuevo_coche}"></div>
+
+	<a th:href="@{/}">
+		<p th:text="#{message.atras}"></p>
+	</a>
 </body>
 
 </html>

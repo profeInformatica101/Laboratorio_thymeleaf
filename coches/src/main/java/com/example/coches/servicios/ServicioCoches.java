@@ -4,6 +4,7 @@ package com.example.coches.servicios;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -35,6 +36,7 @@ public class ServicioCoches {
      * @return verdadero si el coche se agregó con éxito, falso en caso contrario
      */
     public Boolean guardar(Coche coche) {
+    	coche.setId(obtenerNuevoId());
         return coches.add(coche);
     }
     
@@ -60,12 +62,37 @@ public class ServicioCoches {
     }
     
     /**
+     * Obtiene el ID más alto de la lista de coches y lo incrementa.
+     *
+     * @return un nuevo ID incrementado.
+     */
+    private Long obtenerNuevoId() {
+        return coches.stream()
+                     .map(Coche::getId) // Extraer los IDs
+                     .max(Comparator.naturalOrder()) // Encontrar el mayor
+                     .orElse(0L) + 1; // Si no hay coches, empezar desde 1
+    }
+    
+    /**
      * Obtiene todas las fuentes de energía disponibles para los coches.
      *
      * @return un arreglo de todas las posibles fuentes de energía
      */
     public FuenteEnergia[] obtenerFuentesEnergia() {
         return FuenteEnergia.values();
+    }
+    
+    /**
+     * Obtiene todas las marcas únicas de los coches disponibles.
+     * 
+     * @return Un conjunto de marcas únicas.
+     */
+    public Set<String> obtenerMarcasUnicas() {
+    	
+        return obtenerTodos().stream()
+                     .map(Coche::getMarca) // Extrae solo las marcas
+                     .distinct() // Asegura que no se repitan
+                     .collect(Collectors.toSet()); // Convierte a un conjunto
     }
 
    
