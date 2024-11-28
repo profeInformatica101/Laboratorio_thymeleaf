@@ -40,4 +40,30 @@ public class ControladorCoche {
 		 }
 	 }
 	 
+	 /**
+	 * Método para listar coches.
+	 * Este método obtiene una lista de todos los coches y las fuentes de energía disponibles,
+	 * además de los idiomas, y los agrega al modelo para ser accesibles en la vista.
+	 *
+	 * @param model el modelo en el que se agregan los atributos para ser accesibles en la vista.
+	 * @return el nombre de la vista que se debe renderizar, en este caso "coches".
+	 */
+	 @GetMapping("/coches")
+	 public String listarCoches(Model model) {
+		// Obtener la lista de todos los coches
+		 List<Coche> coches = servicioCoches.obtenerTodos();
+		 
+		 
+		 // Agregar la lista de coches al modelo
+		 model.addAttribute("coches", coches);
+		 model.addAttribute("idiomas", Idioma.values());
+		 
+		 
+		 // Retornar el nombre de la vista "coches" que se debe renderizar
+		 return "coches"; //<---- Inyecto los datos del modelo en la VISTA |</>| coches.html
+	 }
+		 
+		 
+	 
+	 
 }

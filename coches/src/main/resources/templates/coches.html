@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title th:text="#{titulo.coches}">Coches</title>
+</head>
+
+<body>
+	<div th:replace="~{fragmentos :: idioma}"></div>
+	<h1 th:text="${mensaje}">Texto por defecto</h1>
+	<h2 th:text="#{titulo.coches}">Texto por defecto</h2>
+	<table>
+		<tr>
+			<th>MARCA</th>
+			<th>MODELO</th>
+			<th>PRECIO</th>
+			<th>AÑO</th>
+			<th>FUENTE DE ENERGÍA</th>
+		</tr>
+		<tr th:each="coche : ${coches}">
+			<td th:text="${coche.marca}"></td>
+			<td th:text="${coche.modelo}"></td>
+			<td th:text="${coche.precio}"></td>
+			<td th:text="${coche.ano}"></td>
+			<td th:text="${coche.fuenteEnergia}"></td>
+		</tr>
+		</tr>
+	</table>
+	<a th:href="@{/}"><p th:text="#{message.atras}"></p></a>
+</body>
+
+</html>
