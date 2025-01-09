@@ -6,7 +6,7 @@ Este repositorio está diseñado como un **laboratorio de aprendizaje** y evalua
 ## Acceso al Laboratorio
 
 El laboratorio incluye una guía interactiva que puede consultarse en el siguiente enlace:  
-[Guía de Thymeleaf](https://profeinformatica101.github.io/java/thymeleaf.html)
+[Guía de Thymeleaf]([https://profeinformatica101.github.io/java/thymeleaf.html](https://profeinformatica101.github.io/java/springboot/thymeleaf.html))
 
 ### Objetivos del Laboratorio
 
